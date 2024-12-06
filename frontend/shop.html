@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxus | Shop</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/shop.css">
+    <meta property="og:title" content="Taxus | Shop">
+    <meta property="og:description" content="Check out taxus executor with 94% UNC and completely free!">
+    <meta property="og:url" content="https://taxus.netlify.app/">
+    <meta property="og:type" content="Roblox Executor">
+    <meta property="og:image" content="/icon.png">
+    <meta name="description" content="Check out taxus executor!!">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Taxus</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/key">Get Key</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://discord.gg/FhPM5fRGNJ" target="_blank">Join Discord</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="shop">
+        <h2 class="shop-heading" style="margin-top: 40px;">Choose Your Plan</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="plan-card">
+                    <h3 class="plan-title">1 Month</h3>
+                    <p class="plan-price">$6.00</p>
+                    <p>Access to Taxus Premium | 1 Month</p>
+                    <button class="btn-buy-now" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="1 Month" data-price="6.00">Buy Now</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="plan-card">
+                    <h3 class="plan-title">2 Months</h3>
+                    <p class="plan-price">$12.00</p>
+                    <p>Access to Taxus Premium | 2 Months</p>
+                    <button class="btn-buy-now" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="2 Months" data-price="12.00">Buy Now</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="plan-card">
+                    <h3 class="plan-title">3 Months</h3>
+                    <p class="plan-price">$18.00</p>
+                    <p>Access to Taxus Premium | 3 Months</p>
+                    <button class="btn-buy-now" data-bs-toggle="modal" data-bs-target="#purchaseModal" data-plan="3 Months" data-price="18.00">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="purchaseModalLabel">Complete Your Purchase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="warning-note">⚠️ Make sure to pay the right amount or the transaction will fail.</div>
+                    <form id="paymentForm">
+                        <div class="form-group">
+                            <label for="cryptoSelect">Select Cryptocurrency</label>
+                            <div class="form-group">
+
+                                <select class="form-control crypto-select" id="cryptoSelect" required>
+                                    <option value="" disabled selected>Choose a cryptocurrency</option>
+                                    <option value="TRX">TRX (Tron)</option>
+                                    <option value="BTC">BTC (Bitcoin)</option>
+                                    <option value="USDT-TRC20">USDT (TRC20)</option>
+                                    <option value="USDT-ERC20">USDT (ERC20)</option>
+                                    </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="walletAddress">Wallet Address:</label>
+                                        <input type="text" class="form-control" id="walletAddress" readonly required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="transactionLink">Transaction Link:</label>
+                                        <input type="url" class="form-control" id="transactionLink" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="chooseKey">Choose a Key:</label>
+                                        <input type="text" class="form-control" id="chooseKey" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email Address:</label>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Confirm Purchase</button>
+                                    </form>
+                                    <div id="confirmationMessage" class="mt-3" style="display: none;">
+                                        <p class="text-success">Sent. Wait for staff to confirm your purchase.</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <script>
+                                    
+                                    document.addEventListener('DOMContentLoaded', function () {
+    const cryptoSelect = document.getElementById('cryptoSelect');
+    const walletInput = document.getElementById('walletAddress');
+    const paymentForm = document.getElementById('paymentForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+    const cooldownTime = 10 * 60 * 1000; // 10 minutes
+    let lastPurchaseTime = localStorage.getItem('lastPurchaseTime');
+
+    cryptoSelect.addEventListener('change', function () {
+        const selectedCrypto = cryptoSelect.value;
+        const walletAddresses = {
+            TRX: 'TX4SjteQDCviDGoegNH7bMPBSePPLsmYCs',
+            BTC: 'bc1qjdcgrhx2xlk35z7zdtnrzjr33g3ne02mrjz9g6',
+            'USDT-TRC20': 'TX4SjteQDCviDGoegNH7bMPBSePPLsmYCs',
+            'USDT-ERC20': '0x7E4898d75DbcFc7518D595C77bDB626B955Dea66',
+        };
+        walletInput.value = walletAddresses[selectedCrypto] || '';
+    });
+
+    paymentForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const now = Date.now();
+        if (lastPurchaseTime && now - lastPurchaseTime < cooldownTime) {
+            const remainingTime = Math.ceil((cooldownTime - (now - lastPurchaseTime)) / 1000);
+            alert(`Please wait ${remainingTime} seconds before making another purchase.`);
+            return;
+        }
+
+        const crypto = cryptoSelect.value;
+        const walletAddress = walletInput.value;
+        const transactionLink = document.getElementById('transactionLink').value;
+        const key = document.getElementById('chooseKey').value;
+        const email = document.getElementById('email').value;
+
+        const requestBody = {
+            content: `New Purchase Confirmation\n\nCrypto: ${crypto}\nWallet Address: ${walletAddress}\nTransaction Link: ${transactionLink}\nKey: ${key}\nEmail: ${email}`,
+        };
+
+        fetch('http://localhost:3000/send-webhook', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    localStorage.setItem('lastPurchaseTime', now);
+                    confirmationMessage.style.display = 'block';
+                    alert('Purchase request sent successfully! Please wait for staff confirmation.');
+                    paymentForm.reset();
+                } else {
+                    alert('Failed to send your purchase request. Please try again later.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+    });
+});
+                                    </script>
+                                    
+
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+                                    
+                                    <script src="/o/a/z/c/vvv/dfgg/qwe/rtt/fdsafdsaf/fdsarefwqr/t/4325/432ds/a/fb/vcx/e5w/43/245236/5235423/sd/af231/e312e/qwfasd/fdas/f42/343/256/326/rgdfsfds/fsd/gfsdg43/54/325/42/653/56342/4/f/rd/s/cx/b/f/45//54623/5432/534/76/32/432/r/das/dfs/vfsd/g/fdsg//wt4/325/42354/32c/d/dg/dfasg/45/32/654235/423/543/fds/agf//43/5423/5432/534/2r4/3f/dsg/ewfg/t/432/fdsafdsafsdf"></script>
+                                    
+                                    </body>
+                                    </html>
+                                    
