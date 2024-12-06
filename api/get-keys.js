@@ -11,7 +11,7 @@ export default function handler(req, res) {
         return key;
     }
 
-    // Generate 24 keys
+    // Generate 24 new keys
     for (let i = 0; i < 24; i++) {
         keys.push(generateKey());
     }
