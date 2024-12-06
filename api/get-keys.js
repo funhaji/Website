@@ -1,24 +1,41 @@
-export default function handler(req, res) {
-    const keys = [];
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+let keys = [];
+let lastGenerated = null;
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    // Function to generate a random key
-    function generateKey() {
-        let key = '';
-        for (let i = 0; i < 16; i++) {
-            key += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return key;
+// Function to generate a random key
+function generateKey() {
+    let key = '';
+    for (let i = 0; i < 16; i++) {
+        key += chars.charAt(Math.floor(Math.random() * chars.length));
     }
+    return key;
+}
 
-    // Generate 24 keys
+// Function to generate 24 keys
+function generateKeys() {
+    keys = [];
     for (let i = 0; i < 24; i++) {
         keys.push(generateKey());
+    }
+    lastGenerated = new Date().getTime();  // Store the time the keys were generated
+}
+
+// Function to check if 24 hours have passed since the last key generation
+function shouldRegenerateKeys() {
+    if (!lastGenerated) return true;
+    const currentTime = new Date().getTime();
+    const hoursPassed = (currentTime - lastGenerated) / (1000 * 60 * 60); // Convert to hours
+    return hoursPassed >= 24;  // Regenerate keys if more than 24 hours have passed
+}
+
+export default function handler(req, res) {
+    // Check if keys should be regenerated
+    if (shouldRegenerateKeys()) {
+        generateKeys();  // Regenerate keys
     }
 
     // CORS configuration: Allow Netlify origin (replace `https://taxus.netlify.app` with your actual Netlify domain)
     const allowedOrigins = ['https://taxus.netlify.app']; // Add other domains if needed
-
     const origin = req.headers.origin;
 
     if (allowedOrigins.includes(origin)) {
