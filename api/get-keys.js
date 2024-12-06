@@ -29,21 +29,13 @@ function shouldRegenerateKeys() {
 }
 
 export default function handler(req, res) {
-    // Check if keys should be regenerated
-    if (shouldRegenerateKeys()) {
+    // Regenerate keys if more than 24 hours have passed or if no keys were generated yet
+    if (!keys.length || shouldRegenerateKeys()) {
         generateKeys();  // Regenerate keys
     }
 
-    // CORS configuration: Allow Netlify origin (replace `https://taxus.netlify.app` with your actual Netlify domain)
-    const allowedOrigins = ['https://taxus.netlify.app']; // Add other domains if needed
-    const origin = req.headers.origin;
-
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);  // Allow Netlify domain
-    } else {
-        res.setHeader('Access-Control-Allow-Origin', '*');  // Fallback to allow all origins
-    }
-
+    // Allow all origins for CORS
+    res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');  // Allow all methods
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');  // Allow all headers
 
