@@ -16,8 +16,17 @@ export default function handler(req, res) {
         keys.push(generateKey());
     }
 
-    // CORS headers to allow all origins, methods, and headers
-    res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
+    // CORS configuration: Allow Netlify origin (replace `https://taxus.netlify.app` with your actual Netlify domain)
+    const allowedOrigins = ['https://taxus.netlify.app']; // Add other domains if needed
+
+    const origin = req.headers.origin;
+
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);  // Allow Netlify domain
+    } else {
+        res.setHeader('Access-Control-Allow-Origin', '*');  // Fallback to allow all origins
+    }
+
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');  // Allow all methods
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');  // Allow all headers
 
