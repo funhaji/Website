@@ -16,15 +16,14 @@ export default function handler(req, res) {
         keys.push(generateKey());
     }
 
-    // Allow CORS from the Netlify domain
-    res.setHeader('Access-Control-Allow-Origin', 'https://taxus.netlify.app');  // Allow your Netlify domain
-    res.setHeader('Access-Control-Allow-Methods', 'GET');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // CORS headers to allow all origins, methods, and headers
+    res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');  // Allow all methods
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');  // Allow all headers
 
-    // Handling preflight (OPTIONS) request if needed
+    // Handle preflight (OPTIONS) request
     if (req.method === 'OPTIONS') {
-        res.status(200).end();
-        return;
+        return res.status(200).end();
     }
 
     // Send the keys as a response
