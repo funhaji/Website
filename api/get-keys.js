@@ -16,8 +16,8 @@ export default function handler(req, res) {
         keys.push(generateKey());
     }
 
-    // Set CORS headers to allow access from your Netlify app
-    res.setHeader('Access-Control-Allow-Origin', 'https://taxus.netlify.app');
+    // Set CORS headers to allow requests from your Netlify app
+    res.setHeader('Access-Control-Allow-Origin', 'https://taxus.netlify.app'); // Allow Netlify origin
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
